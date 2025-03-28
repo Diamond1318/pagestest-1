@@ -12,7 +12,7 @@ export async function onRequest(context) {
   }
 
   // 3. 普通用户：从 KV 获取可用域名
-  const statusData = await env.DOMAIN_MONITOR.get("domain_status", "json") || {};
+  const statusData = await env.DOMAIN_TRACKER.get("domain_status", "json") || {};
   const availableDomains = Object.entries(statusData)
     .filter(([_, s]) => s.status === "UP")
     .map(([domain]) => domain);
